@@ -1,4 +1,5 @@
 let correctPass = false
+let tries = 3
 
 function whileLøkke() {
     let whileLoop = document.getElementById("while");
@@ -26,11 +27,15 @@ function forLøkke() {
 
 
 function checkPass() {
-    let password = "balls" 
+    let password = "a" 
     let attemptedPass = prompt("skriv passord")
-    if (password === attemptedPass) {
+    if (password === attemptedPass && tries > 0) {
         return true
     }
+    else {
+        tries--;
+    }
+    
     return false
 }
 
@@ -54,9 +59,32 @@ function gangeTabbel() {
     printNumber(); 
 }
 
+function even() {
+    let text = document.getElementById("numbers")
+    text.innerHTML = ""
+    for (let i=0; i <= 100; i++) {
+        if ((i & 1) === 0)
+        text.innerHTML += i + " "
+    }
 
-while (correctPass === false) {
+}
+
+function odd() {
+    let text = document.getElementById("numbers")
+    text.innerHTML = ""
+    for (let i=0; i <= 100; i++) {
+        if ((i & 1) != 0)
+        text.innerHTML += i + " "
+    }
+
+}
+
+
+while (correctPass === false && tries > 0) {
     correctPass = checkPass()
+    if (tries <= 0) {
+        document.body.innerHTML = "You entered the wrong password too many times"
+    }
 }
 
 
@@ -66,3 +94,4 @@ while (correctPass === false) {
 whileLøkke()
 forLøkke()
 gangeTabbel()
+
