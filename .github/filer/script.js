@@ -35,13 +35,25 @@ function checkPass() {
 }
 
 function gangeTabbel() {
-    for (i = 1; i <= 10; i++) {
-        for (x = 1; x <= 10; x++) {
-            console.log(i*x)
+    let gangeTabbel = document.getElementById("gangetabbel");
+    let html = ""; 
+    let delay = 100; 
+    
+    let i = 1;
+    function printNumber() {
+        if (i <= 10) {
+            for (let x = 1; x <= 10; x++) {
+                html += i * x + (x === 10 ? "<br>" : " ");
+            }
+            gangeTabbel.innerHTML = html; 
+            i++;
+            setTimeout(printNumber, delay);
         }
     }
-
+    
+    printNumber(); 
 }
+
 
 while (correctPass === false) {
     correctPass = checkPass()
